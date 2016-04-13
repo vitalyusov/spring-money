@@ -1,4 +1,4 @@
-package vit.money;
+package money;
 
 
 import java.util.List;
