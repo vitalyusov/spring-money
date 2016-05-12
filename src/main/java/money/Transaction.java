@@ -1,12 +1,13 @@
 package money;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import org.joda.money.Money;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 
 
@@ -21,15 +22,15 @@ public class Transaction {
     @GeneratedValue(strategy=GenerationType.AUTO)
     private long id;
     
-    
-    private LocalDateTime transactionDate;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date transactionDate;
     
     @ManyToOne
     private Account account;
-    private Money sumDt;
-    private Money sumCt;
+    private int sumDt;
+    private int sumCt;
 
-    public Transaction(long id,LocalDateTime transactionDate, Account account, Money sumDt, Money sumCt) {
+    public Transaction(long id,Date transactionDate, Account account, int sumDt, int sumCt) {
         //Account rebalancedAcc = 
         this.id = id;
         this.transactionDate = transactionDate;
@@ -41,6 +42,6 @@ public class Transaction {
     
     public Account run(){
         
-        return new Account(account.getId(), account.getName(), account.getDescription(), account.getBalance().plus(sumDt).minus(sumCt));
+        return new Account(account.getId(), account.getName(), account.getDescription(), account.getBalance() + sumDt - sumCt);
     }
 }

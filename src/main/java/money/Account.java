@@ -19,11 +19,11 @@ public class Account {
     private long id;
     private String name;
     private String description;
-    private Money balance;
+    private int balance;
 
     protected Account(){}
 
-    public Account(long id, String name, String description, Money balance) {
+    public Account(long id, String name, String description, int balance) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -49,7 +49,7 @@ public class Account {
         return "Account{" + "name=" + name + ", description=" + description + '}';
     }
 
-    public Money getBalance() {
+    public int getBalance() {
         return balance;
     }
     
