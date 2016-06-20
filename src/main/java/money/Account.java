@@ -24,7 +24,7 @@ public class Account {
     protected Account(){}
 
     public Account(long id, String name, String description, int balance) {
-        this.id = id;
+        //this.id = id;
         this.name = name;
         this.description = description;
         this.balance = balance;
@@ -46,7 +46,7 @@ public class Account {
 
     @Override
     public String toString() {
-        return "Account{" + "name=" + name + ", description=" + description + '}';
+        return "Account{id="+ id + ", name=" + name + ", description=" + description + ", balance= "+ balance+"}";
     }
 
     public int getBalance() {

@@ -32,6 +32,10 @@ public class Transaction {
 
     public Transaction(long id,Date transactionDate, Account account, int sumDt, int sumCt) {
         //Account rebalancedAcc = 
+        
+        if (sumDt != 0 && sumCt != 0) 
+            throw new IllegalArgumentException();
+        
         this.id = id;
         this.transactionDate = transactionDate;
         this.account = account;
@@ -40,8 +44,5 @@ public class Transaction {
         
     }
     
-    public Account run(){
-        
-        return new Account(account.getId(), account.getName(), account.getDescription(), account.getBalance() + sumDt - sumCt);
-    }
+    
 }
